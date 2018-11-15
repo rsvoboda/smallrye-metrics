@@ -30,7 +30,7 @@ import java.io.IOException;
 @ApplicationScoped
 public class MetricsInitializer {
     void init(@Observes @Initialized(ApplicationScoped.class) Object ignored) throws IOException {
-        JmxRegistrar registrar = new JmxRegistrar();
-        registrar.init();
+//        JmxRegistrar registrar = new JmxRegistrar();
+//        registrar.init();
     }
 }

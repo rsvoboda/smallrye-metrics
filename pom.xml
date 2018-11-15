@@ -52,7 +52,8 @@
     <version.org.jboss.weld.weld>2.4.3.Final</version.org.jboss.weld.weld>
     <version.weld>2.4.7.Final</version.weld>
     <!-- Used by smallrye-metrics-rest-tck to download WildFly Servlet distribution -->
-    <version.wildfly>13.0.0.Final</version.wildfly>
+    <version.wildfly>15.0.0.CR1</version.wildfly>
+    <!--<version.wildfly>14.0.0.Final</version.wildfly>-->
   </properties>
 
   <scm>

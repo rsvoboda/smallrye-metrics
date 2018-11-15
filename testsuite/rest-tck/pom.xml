@@ -47,11 +47,13 @@
     <dependency>
       <groupId>org.jboss.weld.servlet</groupId>
       <artifactId>weld-servlet</artifactId>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jboss.spec.javax.servlet</groupId>
       <artifactId>jboss-servlet-api_3.1_spec</artifactId>
+      <scope>provided</scope>
     </dependency>
 
   </dependencies>
@@ -67,6 +69,7 @@
         <dependency>
           <groupId>org.wildfly.arquillian</groupId>
           <artifactId>wildfly-arquillian-container-managed</artifactId>
+          <version>2.1.1.Final</version>
         </dependency>
       </dependencies>
       <build>
@@ -76,7 +79,7 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <configuration>
               <environmentVariables>
-                <JBOSS_HOME>${project.build.directory}/wildfly-servlet-${version.wildfly}</JBOSS_HOME>
+                <JBOSS_HOME>${project.build.directory}/wildfly-${version.wildfly}</JBOSS_HOME>
               </environmentVariables>
             </configuration>
           </plugin>
@@ -94,7 +97,7 @@
                   <artifactItems>
                     <artifactItem>
                       <groupId>org.wildfly</groupId>
-                      <artifactId>wildfly-servlet-dist</artifactId>
+                      <artifactId>wildfly-dist</artifactId>
                       <version>${version.wildfly}</version>
                       <type>zip</type>
                       <overWrite>false</overWrite>

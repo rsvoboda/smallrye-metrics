@@ -17,14 +17,14 @@ package io.smallrye.metrics.tck.rest;
 
 import io.smallrye.config.SmallRyeConfigProviderResolver;
 import io.smallrye.config.inject.ConfigExtension;
-import io.smallrye.metrics.testsuite.MetricsInitializer;
+//import io.smallrye.metrics.testsuite.MetricsInitializer;
 import org.eclipse.microprofile.config.spi.ConfigProviderResolver;
 import org.jboss.arquillian.container.test.spi.TestDeployment;
 import org.jboss.arquillian.container.test.spi.client.deployment.ProtocolArchiveProcessor;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
-import org.jboss.weld.environment.deployment.discovery.BeanArchiveHandler;
+//import org.jboss.weld.environment.deployment.discovery.BeanArchiveHandler;
 
 import javax.enterprise.inject.spi.Extension;
 import java.io.File;
@@ -40,21 +40,22 @@ public class ArchiveProcessor implements ProtocolArchiveProcessor {
         WebArchive war = (WebArchive)protocolArchive;
         war.addAsWebInfResource("WEB-INF/jboss-web.xml", "jboss-web.xml");
         String[] deps = {
-                "io.smallrye:smallrye-config",
-                "io.smallrye:smallrye-metrics",
-                "io.smallrye:smallrye-metrics-testsuite-common",
-                "org.jboss.weld.servlet:weld-servlet"
+//                "io.smallrye:smallrye-config",
+//                "io.smallrye:smallrye-metrics",
+                "io.smallrye:smallrye-metrics-testsuite-common"
+//                ,
+//                "org.jboss.weld.servlet:weld-servlet"
         };
 
         File[] dependencies = Maven.resolver().loadPomFromFile(new File("pom.xml")).resolve(deps).withTransitivity().asFile();
 
         war.addAsLibraries(dependencies);
 
-        war.addClass(SmallRyeBeanArchiveHandler.class);
+//        war.addClass(SmallRyeBeanArchiveHandler.class);
         war.addClass(MetricsHttpServlet.class);
-        war.addClass(MetricsInitializer.class);
+//        war.addClass(MetricsInitializer.class);
         war.addAsResource("io/smallrye/metrics/base-metrics.properties", "/io/smallrye/metrics/base-metrics.properties");
-        war.addAsServiceProvider(BeanArchiveHandler.class, SmallRyeBeanArchiveHandler.class);
+//        war.addAsServiceProvider(BeanArchiveHandler.class, SmallRyeBeanArchiveHandler.class);
         war.addAsServiceProvider(Extension.class, ConfigExtension.class);
         war.addAsServiceProvider(ConfigProviderResolver.class, SmallRyeConfigProviderResolver.class);
     }
